@@ -12,7 +12,7 @@ class HelloDockerControllerTest {
     @Test
     void hello() {
         helloDockerController = new HelloDockerController();
-        assertEquals(4, 2+1);
+        assertEquals(4, 3+1);
         log.info("тестик тестик");
         System.out.println("ТЕСТИЩЕ!");
     }
