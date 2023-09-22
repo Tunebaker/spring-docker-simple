@@ -35,9 +35,10 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
+        cache: maven
 
     - name: 3.1 Build ms with Maven
-      run: mvn -B clean package --file ./pom.xml
+      run: mvn -B package --file ./pom.xml
 
 #    steps:
 #      - uses: actions/checkout@v3
