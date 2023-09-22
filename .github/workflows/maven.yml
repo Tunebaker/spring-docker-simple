@@ -35,7 +35,6 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-        cache: maven
 
     - name: 3.1 Build ms with Maven
       run: mvn -B clean package --file ./pom.xml
