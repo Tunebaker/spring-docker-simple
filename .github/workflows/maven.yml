@@ -37,13 +37,20 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: 3.1 Build ms with Maven
-      run: mvn -B package --file ./pom.xml
+    - name: Install dependencies
+      run: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+    - name: Run tests and collect coverage
+      run: mvn -B test
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v4-beta
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_ORG_TOKEN }}
 
-    - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v3
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-#        files: ./coverage.xml
-#        verbose: true
+#    - name: 3.1 Build ms with Maven
+#      run: mvn -B package --file ./pom.xml
+#
+#    - name: Upload coverage reports to Codecov
+#      uses: codecov/codecov-action@v3
+#      with:
+#        token: ${{ secrets.CODECOV_TOKEN }}
 
